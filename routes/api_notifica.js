@@ -27,17 +27,17 @@ router.get('/top10', function(req, res, next) {
 });
 
 router.post('/',function(req,res,next){
-    let id=req.body.id
-    let titulo=req.body.titulo
-    let texto=req.body.mensaje;
-    let tipo=req.body.tipo;
 
     let campos={'titulo': req.body.titulo,'mensaje':req.body.mensaje,'usuario':req.body.usuario,'tipo':req.body.tipo}
 
     modeloNotificacion.postNotificaciones(campos,function(err,data){
+        console.log('hola')
         if(err){
+            console.log('hola2')
             res.send([{'respuesta':err}]);
         }else{
+            console.log('hola3');
+            console.log(data);
             res.send(data);
         }
     });

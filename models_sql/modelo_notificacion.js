@@ -57,7 +57,7 @@ notificacionModel.postNotificaciones=(data,callback)=>{
                     callback(err2,null);
                 }else{
                     let data={'respuesta':'agregacion exitosa'};
-                    data=result.recordset;
+                
                     callback(null,data);
                 }
                 
