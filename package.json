@@ -1,6 +1,9 @@
 {
   "name": "myapp",
   "version": "0.0.0",
+  "engines": {
+    "node": "v12.13.1"
+  },
   "private": true,
   "scripts": {
     "start": "set NODE_ENV=production && node ./bin/www"
