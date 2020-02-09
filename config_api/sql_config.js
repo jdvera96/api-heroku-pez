@@ -17,6 +17,6 @@ var db2={
 
 //exporto configuraciones 
 module.exports={
-    db_config: db
+    db_config: db2
 };
  
