@@ -9,6 +9,9 @@ var modeloNotificacion=require('../models_sql/modelo_notificacion');
 /* GET notificaciones listing. */
 router.get('/', function(req, res, next) {
     modeloNotificacion.getnotificaciones(function(err,data){
+        if(err){
+            res.send([{'respuesta':err}]);
+        }
         console.log(data);
         res.send(data);
     });
@@ -33,9 +36,9 @@ router.post('/',function(req,res,next){
 
     modeloNotificacion.postNotificaciones(campos,function(err,data){
         if(err){
-            res.send([{'respuesta':err}])
+            res.send([{'respuesta':err}]);
         }else{
-            res.send({'respuesta':'notificacion agregada correctamente'});
+            res.send(data);
         }
     });
 });

@@ -13,7 +13,7 @@ notificacionModel.getnotificaciones=(callback)=>{
             var request=new sql.Request();
             request.query(`SELECT * FROM dbnotifica;`,function(err2,result){
                 if(err2){
-                  callback(null,err2);
+                  callback(err2,null);
                 }
                 let data={};
                 data=result.recordset;
@@ -46,17 +46,21 @@ notificacionModel.getTop20notificaciones=(callback)=>{
 notificacionModel.postNotificaciones=(data,callback)=>{
     sql.connect(config.db_config,function(err1,res){
         if(err1){
-            callback(null,err1);
+            callback(error1,null);
         }else{
+            console.log('conexion exitosa');
             var request=new sql.Request();
-            request.query(`insert into dbnotifica (titulo,mensaje,usuario,tipo) values ('${data.titulo}','${data.mensaje}','${data.usuario}','${data.tipo}');`,function(err2,result){
+            
+            request.query(`insert into dbnotifica (titulo,mensaje,usuario) values ('${data.titulo}','${data.mensaje}','${data.usuario}');`,function(err2,result){
                 if(err2){
-                  callback(null,err2);
+                    console.log(err2);
+                    callback(err2,null);
+                }else{
+                    let data={'respuesta':'agregacion exitosa'};
+                    data=result.recordset;
+                    callback(null,data);
                 }
-                let data={};
-                data=result.recordset;
-                console.log('data: '+data);
-                callback(data,null);
+                
             });
         }
 
