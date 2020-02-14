@@ -11,7 +11,7 @@ exports.servicioNotificacionFCM=function(){
         collapse_key: 'dbcv_ilMG58:APA91bEIPWhLrOyy6dv3xJJM6oCS-KZ1KD5vcH4cx9cl6WwFfivRfNEgECdW0GgW_zV0GPPq12lji07e1E9T6QC5rXB3wkMN9e3nHpt8tBYHCf-QAbcmU-x7FR15GUTvN9aQX1iAeiw1',
         
         notification: {
-            title: 'Probando 3', 
+            title: 'Probando 4', 
             body: 'Prueba en api' 
         },
         

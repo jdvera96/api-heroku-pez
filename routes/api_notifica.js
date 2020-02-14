@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var send=require('./servicios/sendNotifications');
+var send=require('../servicios/sendNotifications');
 
 
 //importo el driver mssql para realizar consultas a la base de datoss
