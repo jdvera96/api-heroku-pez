@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var compression = require('compression');
 
+//------------------------------------------
 //import de las rutas del api
 var indexRouter = require('./routes/index');
 var NotificacionesRouter=require('./routes/api_notifica');
