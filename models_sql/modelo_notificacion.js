@@ -112,6 +112,31 @@ notificacionModel.insertToken=(data,callback)=>{
 
 }
 
+notificacionModel.updateToke=(data,callback)=>{
+
+    sql.connect(config.db_config,function(err1,res){
+        if(err1){
+            callback(error1,null);
+        }else{
+            console.log('conexion exitosa');
+            var request=new sql.Request();
+            
+            request.query(`UPDATE dbtoken SET token = '${data.token}' WHERE device='${data.device}';`,function(err2,result){
+                if(err2){
+                    console.log(err2);
+                    callback(err2,null);
+                }else{
+                    let data={'respuesta':'actualizacion exitosa'};
+                    callback(null,data);
+                }
+                
+            });
+        }
+
+    })
+
+}
+
 async function getAllNotificaciones(req,res){
 
     try{

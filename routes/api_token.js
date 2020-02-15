@@ -37,4 +37,19 @@ router.post('/insert',function(req,res,next){
     })
 });
 
+router.post('/update',function(req,res,next){
+
+    console.log(req)
+    campos={device:req.body.Device,
+            token: req.body.Token
+    }
+
+    modeloNotificacion.updateToke(campos,function(err,data){
+        if(err){
+            res.send([{'respuesta':err}]);
+        }
+        res.send([{'respuesta':data}]);
+    })
+});
+
 module.exports = router;
