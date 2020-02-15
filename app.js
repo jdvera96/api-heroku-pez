@@ -9,6 +9,8 @@ var compression = require('compression');
 //import de las rutas del api
 var indexRouter = require('./routes/index');
 var NotificacionesRouter=require('./routes/api_notifica');
+var tokenRouter=require('./routes/api_token');
+
 var usersRouter = require('./routes/users');
 
 
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Permisos para consultas de tipo CROSS-ORIGIN
 app.use(function(req,res,next){
   res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.header('Access-Control-Allow-Methods','Origin,X-Requested/With,Content-Type,Accept','application/json','text/json');
   res.header('Access-Control-Allow-Methods','POST,GET,PUT,DELETE,OPTIONS');
   next();
@@ -38,7 +42,9 @@ app.use(compression())
 
 //set del path de acceso del api
 app.use('/', indexRouter);
+app.use('/api/token',tokenRouter);
 app.use('/api/notificaciones',NotificacionesRouter);
+
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

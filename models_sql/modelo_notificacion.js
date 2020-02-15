@@ -68,6 +68,50 @@ notificacionModel.postNotificaciones=(data,callback)=>{
 }
 
 
+notificacionModel.requestIdDevice=(data,callback)=>{
+    sql.connect(config.db_config,function(err1,res){
+        if(err1){
+          callback(null,err1);
+        }else{
+            console.log('CONEXION EXITOSA');
+            var request=new sql.Request();
+            request.query(`SELECT * FROM dbtoken where device='${data.idDevice}' ;`,function(err2,result){
+                if(err2){
+                  callback(err2,null);
+                }
+                let data={};
+                data=result.recordset;
+                callback(null,data);
+            });
+        }
+      });
+}
+
+notificacionModel.insertToken=(data,callback)=>{
+
+    sql.connect(config.db_config,function(err1,res){
+        if(err1){
+            callback(error1,null);
+        }else{
+            console.log('conexion exitosa');
+            var request=new sql.Request();
+            
+            request.query(`insert into dbtoken (device,token,telefono) values ('${data.device}','${data.token}','09999999999');`,function(err2,result){
+                if(err2){
+                    console.log(err2);
+                    callback(err2,null);
+                }else{
+                    let data={'respuesta':'agregacion exitosa'};
+                    callback(null,data);
+                }
+                
+            });
+        }
+
+    })
+
+}
+
 async function getAllNotificaciones(req,res){
 
     try{

@@ -7,8 +7,8 @@ exports.servicioNotificacionFCM=function(){
     var fcm = new FCM(serverKey);
 
     var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-        to: 'dbcv_ilMG58:APA91bEIPWhLrOyy6dv3xJJM6oCS-KZ1KD5vcH4cx9cl6WwFfivRfNEgECdW0GgW_zV0GPPq12lji07e1E9T6QC5rXB3wkMN9e3nHpt8tBYHCf-QAbcmU-x7FR15GUTvN9aQX1iAeiw1', 
-        collapse_key: 'dbcv_ilMG58:APA91bEIPWhLrOyy6dv3xJJM6oCS-KZ1KD5vcH4cx9cl6WwFfivRfNEgECdW0GgW_zV0GPPq12lji07e1E9T6QC5rXB3wkMN9e3nHpt8tBYHCf-QAbcmU-x7FR15GUTvN9aQX1iAeiw1',
+        to: 'eXKLBpVDD_c:APA91bF0XcF2FFzo93mUYD8dXQ3aK0oSp1cKhxDhVMAlpJ31yIOBCtQ-AOpJBruBvXIiATsP7pEgRuoJt9wT3KqyBKgrykXhErOPjXdcvfTNmlmxBr4VjEGIBvvPYrkjCfUUIeokEzxY', 
+        collapse_key: 'eXKLBpVDD_c:APA91bF0XcF2FFzo93mUYD8dXQ3aK0oSp1cKhxDhVMAlpJ31yIOBCtQ-AOpJBruBvXIiATsP7pEgRuoJt9wT3KqyBKgrykXhErOPjXdcvfTNmlmxBr4VjEGIBvvPYrkjCfUUIeokEzxY',
         
         notification: {
             title: 'Probando 4', 
