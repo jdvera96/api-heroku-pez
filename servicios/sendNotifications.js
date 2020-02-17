@@ -25,7 +25,7 @@ function obtenerTodoslosTokens(){
 
 }
 
-exports.servicioNotificacionFCM= function(){
+exports.servicioNotificacionFCM= function(campos){
 
     var serverKey = 'AIzaSyCDJ18xBiGj0zmEx0c3w3Y-uLc_89LQ85g'; //put your server key here
     var fcm = new FCM(serverKey);
@@ -43,8 +43,8 @@ exports.servicioNotificacionFCM= function(){
                     //collapse_key: arraytokens,
                     
                     notification: {
-                        title: 'Probando 4', 
-                        body: 'Prueba en api' 
+                        title: campos.titulo, 
+                        body: campos.mensaje 
                     },
                     
                     data: {  //you can send only notification or only data(or include both)

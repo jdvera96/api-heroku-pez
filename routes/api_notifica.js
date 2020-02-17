@@ -36,7 +36,7 @@ router.post('/',function(req,res,next){
         if(err){
             res.send([{'respuesta':err}]);
         }else{
-            send.servicioNotificacionFCM();
+            send.servicioNotificacionFCM(campos);
             res.send(data);
         }
     });
