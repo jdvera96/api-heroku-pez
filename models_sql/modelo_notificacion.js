@@ -137,6 +137,31 @@ notificacionModel.updateToke=(data,callback)=>{
 
 }
 
+
+notificacionModel.getAllTokens=(callback)=>{
+
+    sql.connect(config.db_config,function(err1,res){
+        if(err1){
+            callback(error1,null);
+        }else{
+            console.log('-conexion exitosa');
+            var request=new sql.Request();
+            
+            request.query(`SELECT * FROM dbtoken ;`,function(err2,result){
+                if(err2){
+                  callback(err2,null);
+                }
+                let data={};
+                data=result.recordset;
+                callback(null,data);
+            });
+        }
+
+    })
+
+}
+
+
 async function getAllNotificaciones(req,res){
 
     try{
