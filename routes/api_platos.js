@@ -7,8 +7,12 @@ var sql=require('mssql');
 //importo el modelo notificaciones
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    modeloPlatos.getPlatos(function(err,data){
+router.get('/:id', function(req, res, next) {
+
+    let idGrupo=req.params.id
+    console.log('grupo obtenido: ',idGrupo);
+    campos={'idGrupo':idGrupo}
+    modeloPlatos.getPlatos(campos,function(err,data){
         if(err){
             res.send([{'respuesta':err}]);
         }
