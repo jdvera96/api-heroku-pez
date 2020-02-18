@@ -37,13 +37,28 @@ exports.servicioNotificacionFCM= function(campos){
         }else{
             for (let index = 0; index < data.length; index++) {
                 let token = data[index]["token"];
+
+                //obtengo la fecha y hora actual
+                var hoy = new Date();
+                let ano=hoy.getFullYear();
+                let mes=hoy.getMonth()+1;
+                let dia=hoy.getDay()
+
+                let hora=hoy.getHours();
+                let minutos=hoy.getMinutes();
+
+                let fecha=ano+'-'+mes+'-'+dia+' || '+hora+':'+minutos
+
+                console.log("fecha actual")
+                console.log(fecha)
+
                 var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
 
                     to: token, 
                     //collapse_key: arraytokens,
                     
                     notification: {
-                        title: campos.titulo, 
+                        title: fecha+' ### '+campos.titulo, 
                         body: campos.mensaje 
                     },
                     
