@@ -10,7 +10,7 @@ gruposModel.getGrupos=(callback)=>{
         }else{
             console.log('CONEXION EXITOSA');
             var request=new sql.Request();
-            request.query(`select tipo,codigo,nombre from dbtablas where tipo = 'GRU';`,function(err2,result){
+            request.query(`select tipo,codigo,nombre from dbtablas where tipo = 'GRU' and accesorio=0;`,function(err2,result){
                 if(err2){
                   callback(err2,null);
                 }
