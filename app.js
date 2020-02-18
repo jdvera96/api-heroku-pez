@@ -10,6 +10,9 @@ var compression = require('compression');
 var indexRouter = require('./routes/index');
 var NotificacionesRouter=require('./routes/api_notifica');
 var tokenRouter=require('./routes/api_token');
+var grupoPlatosRouter=require('./routes/api_grupos');
+var platosRouter=require('./routes/api_platos');
+
 
 var usersRouter = require('./routes/users');
 
@@ -44,6 +47,8 @@ app.use(compression())
 app.use('/', indexRouter);
 app.use('/api/token',tokenRouter);
 app.use('/api/notificaciones',NotificacionesRouter);
+app.use('/api/grupos',grupoPlatosRouter);
+app.use('/api/platos',platosRouter);
 
 app.use('/users', usersRouter);
 
