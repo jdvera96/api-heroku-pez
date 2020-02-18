@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var send=require('../servicios/sendNotifications');
+var sendIndividual=require('../servicios/sendNotificacionsOne');
 
 
 //importo el driver mssql para realizar consultas a la base de datoss
@@ -37,6 +38,22 @@ router.post('/',function(req,res,next){
             res.send([{'respuesta':err}]);
         }else{
             send.servicioNotificacionFCM(campos);
+            res.send(data);
+        }
+    });
+
+});
+
+
+router.post('/individual',function(req,res,next){
+
+    let campos={'token': req.body.token,'titulo': req.body.titulo,'mensaje':req.body.mensaje,'usuario':req.body.usuario,'tipo':req.body.tipo}
+
+    modeloNotificacion.postNotificaciones(campos,function(err,data){
+        if(err){
+            res.send([{'respuesta':err}]);
+        }else{
+            sendIndividual.servicioNotificacionFCM(campos);
             res.send(data);
         }
     });
