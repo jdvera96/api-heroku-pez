@@ -91,7 +91,7 @@ notificacionModel.insertToken=(data,callback)=>{
 
     sql.connect(config.db_config,function(err1,res){
         if(err1){
-            callback(error1,null);
+            callback(err1,null);
         }else{
             console.log('conexion exitosa');
             var request=new sql.Request();
