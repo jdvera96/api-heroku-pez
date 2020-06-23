@@ -121,6 +121,7 @@ notificacionModel.updateToke=(data,callback)=>{
             console.log('conexion exitosa');
             var request=new sql.Request();
             
+            console.log('data antes de actualizar: ',data)
             request.query(`UPDATE dbtoken SET token = '${data.token}' WHERE device='${data.device}';`,function(err2,result){
                 if(err2){
                     console.log(err2);
