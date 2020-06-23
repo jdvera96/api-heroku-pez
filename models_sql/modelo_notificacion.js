@@ -96,7 +96,7 @@ notificacionModel.insertToken=(data,callback)=>{
             console.log('conexion exitosa');
             var request=new sql.Request();
             
-            request.query(`insert into dbtoken (device,token,telefono) values ('${data.device}','${data.token}','09999999999');`,function(err2,result){
+            request.query(`insert into dbtoken (device,token,usuario) values ('${data.device}','${data.token}','09999999999');`,function(err2,result){
                 if(err2){
                     console.log(err2);
                     callback(err2,null);
@@ -161,20 +161,5 @@ notificacionModel.getAllTokens=(callback)=>{
 
 }
 
-
-async function getAllNotificaciones(req,res){
-
-    try{
-        //establezco conexion con la base de datos
-        let conexion=await sql.connect(config.db_config);
-        let  request=new sql.Request();
-        let respuesta=await request.query(`SELECT * FROM dbnotifica;`);
-        console.log(respuesta);
-        return respuesta;
-        
-    }catch(e){
-        return {'respuesta':'error inesperado'}
-    }
-}
 
 module.exports=notificacionModel;

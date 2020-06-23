@@ -4,9 +4,8 @@ console.log("Prueba individual")
 
 var FCM = require('fcm-node');
 
-
 exports.servicioNotificacionFCM= function(campos){
-
+                    
     var serverKey = 'AIzaSyCDJ18xBiGj0zmEx0c3w3Y-uLc_89LQ85g'; //put your server key here
     var fcm = new FCM(serverKey);
     
