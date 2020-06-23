@@ -77,11 +77,11 @@ notificacionModel.requestIdDevice=(data,callback)=>{
             var request=new sql.Request();
             request.query(`SELECT * FROM dbtoken where device='${data.idDevice}' ;`,function(err2,result){
                 if(err2){
-                  callback(err2,null);
+                    return callback(err2,null);
                 }
                 let data={};
                 data=result.recordset;
-                callback(null,data);
+                return callback(null,data);
             });
         }
       });
@@ -91,18 +91,18 @@ notificacionModel.insertToken=(data,callback)=>{
 
     sql.connect(config.db_config,function(err1,res){
         if(err1){
-            callback(err1,null);
+            return callback(err1,null);
         }else{
             console.log('conexion exitosa');
             var request=new sql.Request();
             
-            request.query(`insert into dbtoken (device,token,usuario) values ('${data.device}','${data.token}','09999999999');`,function(err2,result){
+            request.query(`insert into dbtoken (device,token) values ('${data.device}','${data.token}');`,function(err2,result){
                 if(err2){
                     console.log(err2);
-                    callback(err2,null);
+                    return callback(err2,null);
                 }else{
                     let data={'respuesta':'agregacion exitosa'};
-                    callback(null,data);
+                    return callback(null,data);
                 }
                 
             });
@@ -124,12 +124,11 @@ notificacionModel.updateToke=(data,callback)=>{
             request.query(`UPDATE dbtoken SET token = '${data.token}' WHERE device='${data.device}';`,function(err2,result){
                 if(err2){
                     console.log(err2);
-                    callback(err2,null);
+                    return callback(err2,null);
                 }else{
                     let data={'respuesta':'actualizacion exitosa'};
-                    callback(null,data);
+                    return callback(null,data);
                 }
-                
             });
         }
 
