@@ -31,7 +31,7 @@ router.get('/top10', function(req, res, next) {
 
 router.post('/',function(req,res,next){
 
-    let campos={'titulo': req.body.titulo,'mensaje':req.body.mensaje,'usuario':req.body.usuario,'tipo':req.body.tipo}
+    let campos={'titulo': req.body.titulo,'mensaje':req.body.mensaje,'tipo':req.body.tipo}
 
     modeloNotificacion.postNotificaciones(campos,function(err,data){
         if(err){

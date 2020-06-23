@@ -51,7 +51,7 @@ notificacionModel.postNotificaciones=(data,callback)=>{
             console.log('conexion exitosa');
             var request=new sql.Request();
             
-            request.query(`insert into dbnotifica (titulo,mensaje,usuario) values ('${data.titulo}','${data.mensaje}','${data.usuario}');`,function(err2,result){
+            request.query(`insert into dbnotifica (titulo,mensaje) values ('${data.titulo}','${data.mensaje}');`,function(err2,result){
                 if(err2){
                     console.log(err2);
                     callback(err2,null);
