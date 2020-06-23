@@ -94,6 +94,7 @@ notificacionModel.insertToken=(data,callback)=>{
             return callback(err1,null);
         }else{
             console.log('conexion exitosa');
+            console.log('data antes de registrar: ',data)
             var request=new sql.Request();
             
             request.query(`insert into dbtoken (device,token) values ('${data.device}','${data.token}');`,function(err2,result){
